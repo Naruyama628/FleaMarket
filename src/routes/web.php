@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ItemController::class, 'index']);
+Route::get('/show', [ItemController::class, 'show']);
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('login');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/show', [ItemController::class, 'show']);
+    });

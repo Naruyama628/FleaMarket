@@ -1,0 +1,52 @@
+.toppage-header__inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    background-color: #000;
+    align-items: center;
+}
+
+.toppage-header__logo {
+    padding: 0 30px;
+}
+
+.toppage-header__search-form {
+    padding: 0 30px;
+}
+
+.toppage-header__nav {
+    display: flex;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+.search-form__input {
+    width: 100%;
+    padding: 10px
+}
+
+.auth-form__button,
+.mypage-form__button,
+.sell-form__button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.auth-form__button,
+.mypage-form__button {
+    background: transparent;
+    color: #fff;
+}
+
+.sell-form__button {
+    background: #fff;
+    color: #000;
+    border-radius: 3px;
+}
+
+.main {
+    width: 80%;
+    margin: 0 auto;
+}

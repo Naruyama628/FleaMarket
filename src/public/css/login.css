@@ -1,0 +1,25 @@
+.main-header {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.main__title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.login-form {
+
+}
+
+.login-form__item {
+    margin-bottom: 20px;
+}
+
+.login-form__label {
+    display: block;
+}
+
+.login-form__text {
+    display: block;
+}
