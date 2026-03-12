@@ -9,6 +9,12 @@
     padding: 0 30px;
 }
 
+.toppage-header__button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .toppage-header__search-form {
     padding: 0 30px;
 }

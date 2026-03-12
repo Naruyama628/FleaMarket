@@ -11,14 +11,11 @@ class ItemController extends Controller
         return view('items.index');
     }
 
-        public function show() {
+    public function show() {
         return view('items.show');
     }
 
-    /*
-    public function contact() {
-        $categories = Category::all();
-        return view('contact', compact('categories'));
+    public function create() {
+        return view('items.create');
     }
-    */
 }

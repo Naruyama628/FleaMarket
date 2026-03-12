@@ -19,11 +19,14 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [ItemController::class, 'index']);
-Route::get('/show', [ItemController::class, 'show']);
-
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('login');
+Route::get('/item/{item_id}', [ItemController::class, 'item']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/show', [ItemController::class, 'show']);
+    Route::get('/purchase/{item_id}', [ItemController::class, 'item']);
+    Route::get('/purchase/address/i{tem_id}', [ItemController::class, 'item']);
+    Route::get('/sell', [ItemController::class, 'item']);
+    Route::get('/mypage', [ItemController::class, 'item']);
+    Route::get('/mypage/profile', [ItemController::class, 'item']);
     });
