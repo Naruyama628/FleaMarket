@@ -31,7 +31,7 @@
             <div class="item-detail__icon--comment"></div>
         </div>
 
-        <form action="" class="item-detail__form">
+        <form action="/create" method="get" class="item-detail__form">
             <button class="item-detail__form--submit">
                 購入手続きへ
             </button>
