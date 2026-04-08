@@ -8,6 +8,7 @@
     <title></title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/layouts/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/layouts/nav.css') }}">
     @yield('css')
 </head>
 

@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+
+use App\Http\Requests\LoginRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -21,6 +28,32 @@ class FortifyServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+        $this->app->singleton(LoginResponseContract::class, function () {
+            return new class implements LoginResponseContract {
+                public function toResponse($request)
+                {
+                    $user = $request->user();
+                    if($user->profile_completed) {
+                        return redirect('/profile/edit');
+                    }
+
+                    if (!$user->profile) {
+                        return redirect('/profile/edit');
+                    }
+                    
+                    return redirect('/');
+                }
+            };
+        });
+
+        $this->app->singleton(RegisterResponseContract::class, function () {
+            return new class implements RegisterResponseContract {
+                public function toResponse($request)
+                {
+                    return redirect('/profile/edit');
+                }
+            };
+        });
     }
 
     /**
@@ -43,5 +76,27 @@ class FortifyServiceProvider extends ServiceProvider
 
             return Limit::perMinute(10)->by($email . $request->ip());
         });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $loginRequest = new LoginRequest();
+
+            \Validator::make(
+                $request->all(),
+                $loginRequest->rules(),
+                $loginRequest->messages()
+            )->validate();
+
+            $user = User::where('email', $request->email)->first();
+
+            if (! $user || ! Hash::check($request->password, $user->password)) {
+                throw ValidationException::withMessages([
+                    'email' => ['ログイン情報が登録されていません。'],
+                ]);
+            }
+
+            return $user;
+        });
+
     }
 }
+

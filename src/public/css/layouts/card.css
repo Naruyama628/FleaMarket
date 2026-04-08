@@ -1,0 +1,18 @@
+.item-card {
+    width: 290px;
+    height: 320px;
+}
+
+.item-card__img {
+    width: 290px;
+    height: 290px;
+}
+
+.item-card__name {
+    padding: 0;
+    margin: 0;
+}
+
+.item-card__link {
+    text-decoration: none;
+}

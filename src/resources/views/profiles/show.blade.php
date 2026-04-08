@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/profiles/show.css') }}">
+<link rel="stylesheet" href="{{ asset('css/layouts/card.css') }}">
 @endsection
 
 @include('layouts.search_form')
@@ -11,30 +12,40 @@
 
 <div class="profile">
     <div class="profile__avatar">
-        <img src="" alt="" class="profile__avatar-image">
+        <img src="{{ $user->profile?->profile_image ? asset('storage/' . $user->profile?->profile_image) : '' }}" alt="" class="profile__avatar-image">
     </div>
 
-    <p class="profile__name-text"></p>
+    <div class="profile__name">
+        <p class="profile__name-text">{{ $user->name }}</p>
+    </div>
 
-    <a href="" class="profile__edit">プロフィールを編集</a>
+        <a href="/mypage/profile" class="profile__edit-link">プロフィールを編集</a>
 </div>
 
 <div class="tab-menu">
-    <form action="" method="" class="tab-menu__form">
-        <button class="tab-menu__form--button">
-            出品した商品
-        </button>
-    </form>
+    @if($page === 'buy')
+    <a href="/mypage?page=sell" class="tab-menu__sell">
+        出品した商品
+    </a>
 
-    <form action="" method="" class="tab-menu__form">
-        <button class="tab-menu__form__button">
+    <a href="/mypage?page=buy" class="tab-menu__buy tab-menu__buy--red">
+        購入した商品
+    </a>
+    @else
+        <a href="/mypage?page=sell" class="tab-menu__sell tab-menu__sell--red">
+            出品した商品
+        </a>
+
+        <a href="/mypage?page=buy" class="tab-menu__buy">
             購入した商品
-        </button>
-    </form>
+        </a>
+    @endif
 </div>
 
 <section class="item-list">
-    @include('layouts.product-card')
+    @foreach($items as $item)
+        @include('layouts.product-card')
+    @endforeach
 </section>
 
 @endsection

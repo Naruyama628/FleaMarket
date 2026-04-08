@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/addresses/edit.css') }}">
 @endsection
 
 @include('layouts.search_form')
@@ -12,8 +12,11 @@
     <h2 class="main-header__title">住所の変更</h2>
 </div>
 
-<form action="/edit" method="post" class="address-edit-form">
+<form action="/purchase/address" method="post" class="address-edit-form">
     @csrf
+
+    <input type="hidden" class="address-edit-form__hidden-input" name="item_id" value="{{ $item_id }}">
+
     <div class="address-edit-form__item">
         <label for="postal_code" class="address-edit-form__label">郵便番号</label>
         <input type="postal_code" class="address-edit-form__input" id="postal_code" name="postal_code">

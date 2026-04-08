@@ -17,14 +17,16 @@
 </form>
 @endguest
 
-<form action="" method="post" class="mypage-form">
+<form action="/mypage" method="get" class="mypage-form">
     @csrf
+    <input type="hidden" class="mypage-form_hidden-input" name="page" value="sell">
+
     <button type="submit" class="mypage-form__button">
         マイページ
     </button>
 </form>
 
-<form action="" method="post" class="sell-form">
+<form action="/sell" method="get" class="sell-form">
     @csrf
     <button type="submit" class="sell-form__button">
         出品

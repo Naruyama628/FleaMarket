@@ -1,0 +1,21 @@
+.auth-form__button,
+.mypage-form__button,
+.sell-form__button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.auth-form__button,
+.mypage-form__button {
+    background: transparent;
+    color: #fff;
+}
+
+.sell-form__button {
+    background: #fff;
+    color: #000;
+    border-radius: 3px;
+}

@@ -1,6 +1,14 @@
 @section('search')
-<form action="" class="search-form">
+<form action="/search" method="get" class="search-form">
     @csrf
-    <input type="text" class="search-form__input" placeholder="何をお探しですか？">
+    
+    @isset($tab)
+        <input type="hidden" class="search-form___input-hidden" name="tab" value="{{ $tab }}">
+    @else
+        <input type="hidden" class="search-form___input-hidden" name="tab" value="recommended">
+    @endisset
+    
+
+    <input type="text" class="search-form__input" name="keyword" placeholder="何をお探しですか？">
 </form>
 @endsection
