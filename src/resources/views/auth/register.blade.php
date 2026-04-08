@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/auth/auth.css') }}">
 @endsection
 
 @section('content')
@@ -9,38 +9,48 @@
     <h2 class="main-header__title">会員登録</h2>
 </div>
 
-<!-- 後でけす エラー表示 -->
-@foreach ($errors->all() as $error)
-  <li>{{$error}}</li>
-@endforeach
-
-<form action="/register" method="post" class="login-form">
+<form action="/register" method="post" class="register-form" novalidate>
     @csrf
-    <div class="login-form__item">
-        <label for="name" class="login-form__label">ユーザー名</label>
-        <input type="text" class="login-form__input" id="name" name="name">
+    <div class="register-form__item">
+        <label for="name" class="register-form__label">ユーザー名</label>
+        <input type="text" class="register-form__input" id="name" name="name" value="{{ old('name') }}">
+        @error('name')
+            <p class="register-form__error">{{ $message }}</p>
+        @enderror
     </div>
 
-    <div class="login-form__item">
-        <label for="email" class="login-form__label">メールアドレス</label>
-        <input type="email" class="login-form__input" id="email" name="email">
+    <div class="register-form__item">
+        <label for="email" class="register-form__label">メールアドレス</label>
+        <input type="email" class="register-form__input" id="email" name="email" value="{{ old('email') }}">
+        @error('email')
+            <p class="register-form__error">{{ $message }}</p>
+        @enderror
     </div>
 
-    <div class="login-form__item">
-        <label for="password" class="login-form__label">パスワード</label>
-        <input type="password" class="login-form__input" id="password" name="password">
+    <div class="register-form__item">
+        <label for="password" class="register-form__label">パスワード</label>
+        <input type="password" class="register-form__input" id="password" name="password">
+        
     </div>
 
-    <div class="login-form__item">
-        <label for="password_confirmation" class="login-form__label">確認用のパスワード</label>
-        <input type="password" class="login-form__input" id="password_confirmation" name="password_confirmation">
+    <div class="register-form__item">
+        <label for="password_confirmation" class="register-form__label">確認用のパスワード</label>
+        <input type="password" class="register-form__input" id="password_confirmation" name="password_confirmation">
+        @error('password')
+            <p class="register-form__error">{{ $message }}</p>
+        @enderror
+        @error('password_confirmation')
+            <p class="register-form__error">{{ $message }}</p>
+        @enderror
     </div>
 
-    <div class="login-form__item">
-        <button class="login-form__button" type="submit">会員登録</button>
+    <div class="register-form__item">
+        <button class="register-form__button" type="submit">会員登録</button>
+    </div>
+
+    <div class="register-form__item register-form__item--text-center">
+        <a href="/login" class="register-form__login-link">ログインはこちら</a>
     </div>
 </form>
-
-<a href="/login" class="">aa</a>
 @endsection
 

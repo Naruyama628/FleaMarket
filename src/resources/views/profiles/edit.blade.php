@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="{{ asset('css/profiles/edit.css') }}">
 @endsection
 
 @include('layouts.search_form')
@@ -12,38 +12,41 @@
     <h2 class="profile-edit-header__title">プロフィール設定</h2>
 </div>
 
-<div class="profile">
-    <div class="profile__avatar">
-        <img src="" alt="" class="profile__avatar-image">
-    </div>
+<form action="/profile/edit" method="post" class="profile-edit-form" enctype="multipart/form-data">
+    @csrf
+    <div class="profile">
+        <div class="profile__avatar">
+            <img src="{{ $user->profile?->profile_image ? asset('storage/' . $user->profile?->profile_image) : '' }}" class="profile__avatar-image">
+        </div>
 
-    <p class="profile__name"></p>
-
-    <form action="" class="profile__image-form">
+        <label for="image" class="profile__image-button">画像を選択する</label>
+        
         <input  class="profile__image-input" type="file" id="image" name="image" accept="image/*" />
-    </form>
-</div>
-
-<form action="" class="profile-edit-form">
-    <div class="profile-edit-form__group">
-        <label for="" class="profile-edit-form__label">ユーザー名</label>
-        <input type="text" class="profile-edit-form__input">
     </div>
 
     <div class="profile-edit-form__group">
-        <label for="" class="profile-edit-form__label">郵便番号</label>
-        <input type="text" class="profile-edit-form__input">
+        <label for="name" class="profile-edit-form__label">ユーザー名</label>
+        <input type="text" class="profile-edit-form__input" id="name" name="name" value="{{ old('name', $user->name) }}">
     </div>
 
     <div class="profile-edit-form__group">
-        <label for="" class="profile-edit-form__label">住所</label>
-        <input type="text" class="profile-edit-form__input">
+        <label for="postal_code" class="profile-edit-form__label">郵便番号</label>
+        <input type="text" class="profile-edit-form__input" id="postal_code" name="postal_code" value="{{ old('postal_code', $user->profile?->postal_code ?? '') }}">
     </div>
 
     <div class="profile-edit-form__group">
-        <label for="" class="profile-edit-form__label">建物名</label>
-        <input type="text" class="profile-edit-form__input">
+        <label for="address" class="profile-edit-form__label">住所</label>
+        <input type="text" class="profile-edit-form__input" id="address" name="address" value="{{ old('address', $user->profile?->address ?? '') }}">
     </div>
+
+    <div class="profile-edit-form__group">
+        <label for="building" class="profile-edit-form__label">建物名</label>
+        <input type="text" class="profile-edit-form__input"  id="building" name="building" value="{{ old('building', $user->profile?->building ?? '') }}">
+    </div>
+
+    <button type="submit" class="profile-edit-form__button">
+        更新する
+    </button>
 </form>
 
 @endsection

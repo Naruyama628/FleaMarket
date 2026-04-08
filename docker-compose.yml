@@ -40,5 +40,14 @@ services:
     ports:
       - 8080:80
 
+  stripe:
+    image: stripe/stripe-cli:latest
+    command: listen --api-key ${STRIPE_SECRET} --forward-to http://nginx/stripe/webhook
+    depends_on:
+      - nginx
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
 volumes:
   mysql_data:
