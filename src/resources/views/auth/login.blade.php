@@ -9,11 +9,11 @@
     <h2 class="main-header__title">ログイン</h2>
 </div>
 
-<form action="/login" method="post" class="login-form">
+<form action="/login" method="post" class="login-form" novalidate>
     @csrf
     <div class="login-form__item">
         <label for="email" class="login-form__label">メールアドレス</label>
-        <input type="email" class="login-form__input" id="email" name="email">
+        <input type="email" class="login-form__input" id="email" name="email" value="{{ old('email') }}">
         @error('email')
             <p class="login-form__error">{{ $message }}</p>
         @enderror

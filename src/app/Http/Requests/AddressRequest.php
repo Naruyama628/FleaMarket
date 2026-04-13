@@ -13,7 +13,7 @@ class AddressRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,19 @@ class AddressRequest extends FormRequest
     {
         return [
             //
+            'postal_code' => ['required', 'regex:/^[0-9]{3}-[0-9]{4}$/'],
+            'address' => ['required'],
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            //
+            'postal_code.required' => '郵便番号を入力してください',
+            'postal_code.regex' => '郵便番号は「012-3456」の形式で入力してください',
+            
+            'address.required' => '住所を入力してください',
+            ];
     }
 }

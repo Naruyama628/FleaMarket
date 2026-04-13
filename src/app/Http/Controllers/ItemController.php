@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Category;
@@ -17,13 +18,18 @@ class ItemController extends Controller
         $tab = $request->query('tab');
 
         if ($tab === 'mylist' && !auth()->check()) {
-            return redirect()->route('login');
+            $items = [];
+            return view('items.index', compact('items', 'tab'));
         }
 
         if ($tab === 'mylist') {
-            $items = auth()->user()->likes()->where('is_sold', false)->get();
+            $items = auth()
+                    ->user()
+                    ->likes()
+                    ->where('products.user_id', '!=', auth()->id())
+                    ->get();
         } else {
-            $items = Product::where('is_sold', false)->get();
+            $items = Product::where('products.user_id', '!=', auth()->id())->get();
         }
 
         return view('items.index', compact('items', 'tab'));
@@ -31,6 +37,11 @@ class ItemController extends Controller
 
     public function search(Request $request) {
         $tab = $request->tab;
+
+        if($tab === 'mylist' && !auth()->check()) {
+            $items = [];
+            return view('items.index', compact('items', 'tab'));
+        }
 
         if ($tab === 'mylist') {
             $items = auth()
@@ -102,15 +113,12 @@ class ItemController extends Controller
     }
 
     // コメント
-    public function comment(Request $request, $item_id) {
+    public function comment(CommentRequest $request, $item_id) {
         $user = auth()->user();
         $item = Product::findOrFail($item_id);
 
-        $item->comments()->updateOrCreate([
+        $item->comments()->create([
             "user_id" => $user->id,
-            'product_id' => $item->id                ,
-        ],
-        [
             "content" => $request->comment,
         ]);
 

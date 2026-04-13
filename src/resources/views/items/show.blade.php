@@ -106,6 +106,9 @@
                 <p class="item-comment__form--title">商品へのコメント</p>
 
                 <textarea class="item-comment__form-textarea" name="comment">{{ old('comment') }}</textarea>
+                @error('content')
+                    <p class="item-comment__error">{{ $message }}</p>
+                @enderror
 
                 <button type="submit" class="item-comment__form--button">
                     コメントを送信する

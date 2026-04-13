@@ -50,6 +50,9 @@
                     {{ request('payment_method') == 'konbini' ? 'selected' : '' }}>コンビニ支払い</option>
                 </select>
             </div>
+            @error('payment_method')
+                <p class="payment-method__error">{{ $message }}</p>
+            @enderror
         </form>
 
         <!-- 配送先 -->
@@ -63,7 +66,14 @@
                 <p class="shipping-address__postal-code">〒 {{ request('postal_code', $address->postal_code)}}</p>
                 <div class="shipping-address__address">
                     <p>{{ request('address', $address->address) }}</p>
+                    @error('postal_code')
+                        <p class="payment-method__error">{{ $message }}</p>
+                    @enderror
+
                     <p>{{ request('building', $address->building) }}</p>
+                    @error('address')
+                        <p class="payment-method__error">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
         </div>

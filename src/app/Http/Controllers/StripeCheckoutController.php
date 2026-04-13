@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\PurchaseRequest;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
 class StripeCheckoutController extends Controller
 {
-    public function create(Request $request, Product $item)
+    public function create(PurchaseRequest $request, Product $item)
     {
         if ($item->is_sold) {
             return back()->with('error', 'この商品は売り切れです。');

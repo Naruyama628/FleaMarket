@@ -19,17 +19,23 @@
 
     <div class="address-edit-form__item">
         <label for="postal_code" class="address-edit-form__label">郵便番号</label>
-        <input type="postal_code" class="address-edit-form__input" id="postal_code" name="postal_code">
+        <input type="postal_code" class="address-edit-form__input" id="postal_code" name="postal_code" value="{{ old('postal_code') }}">
+        @error('postal_code')
+            <p class="address-edit-form__error">{{ $message }}</p>
+        @enderror
     </div>
 
     <div class="address-edit-form__item">
         <label for="address" class="address-edit-form__label">住所</label>
-        <input type="address" class="address-edit-form__input" id="address" name="address">
+        <input type="address" class="address-edit-form__input" id="address" name="address" value="{{ old('address') }}">
+        @error('address')
+            <p class="address-edit-form__error">{{ $message }}</p>
+        @enderror
     </div>
 
     <div class="address-edit-form__item">
         <label for="building" class="address-edit-form__label">建物名</label>
-        <input type="building" class="address-edit-form__input" id="building" name="building">
+        <input type="building" class="address-edit-form__input" id="building" name="building" value="{{ old('building') }}"">
     </div>
 
     <div class="address-edit-form__item">

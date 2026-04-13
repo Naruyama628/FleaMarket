@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\Product;
@@ -18,7 +19,7 @@ class ProfileController extends Controller
         return view('profiles.edit', compact('user'));
     }
 
-    public function create(Request $request) {
+    public function create(ProfileRequest $request) {
         $user = auth()->user();
 
         // 画像をアップロードした際の処理

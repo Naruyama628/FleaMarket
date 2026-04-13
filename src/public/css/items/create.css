@@ -167,3 +167,8 @@
 .create-form__button {
     margin-bottom: 150px;
 }
+
+.create-form__error {
+    color: #FF0000;
+    margin: 0 0 20px 0;
+}
