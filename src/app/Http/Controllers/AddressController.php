@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddressRequest;
 use App\Models\Order;
 use App\Models\OrderAddress;
 use App\Models\Product;
@@ -16,7 +17,7 @@ class AddressController extends Controller
         return view('addresses.edit', compact('item_id'));
     }
 
-    public function create (Request $request) {
+    public function create (AddressRequest $request) {
         $item = Product::find($request->item_id);
         $address = (object) [
             'postal_code' => $request->postal_code,

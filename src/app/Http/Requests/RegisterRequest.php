@@ -41,7 +41,7 @@ class RegisterRequest extends FormRequest
             'name.max' => '',
 
             'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'aaa',
+            'email.email' => 'メールアドレスはメール形式で入力してください',
             
             'password.required' => 'パスワードを入力してください',
             'password.string' => '',

@@ -21,13 +21,13 @@ use App\Http\Controllers\StripeWebhookController;
 */
 
 // ユーザー認証前
-Route::get('/', [ItemController::class, 'index'])->name('items.index');;
+Route::get('/', [ItemController::class, 'index'])->name('items.index');
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
 Route::get('/search', [ItemController::class, 'search']);
 
 //
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/register', [AuthController::class, 'register'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 //stripe
 Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle'])
