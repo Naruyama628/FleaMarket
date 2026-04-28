@@ -19,7 +19,7 @@
 
 <form action="/mypage" method="get" class="mypage-form">
     @csrf
-    <input type="hidden" class="mypage-form_hidden-input" name="page" value="sell">
+    <input type="hidden" name="page" value="sell">
 
     <button type="submit" class="mypage-form__button">
         マイページ

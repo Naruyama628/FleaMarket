@@ -10,7 +10,7 @@
 @section('content')
 <div class="item-detail">
     <div class="item-detail__left">
-        <img src="{{ asset('storage/' . $item->image) }}" alt="" class="item-detail__img">
+        <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="item-detail__img">
     </div>
 
     <div class="item-detail__right">
@@ -23,9 +23,9 @@
         </div>
 
         <div class="item-detail__price">
-            <p class="item-detail__price--label">￥</p>
-            <p class="item-detail__price--num">{{ number_format($item->price) }}</p>
-            <p class="item-detail__price--label">(税込み)</p>
+            <p class="item-detail__price-label">￥</p>
+            <p class="item-detail__price-num">{{ number_format($item->price) }}</p>
+            <p class="item-detail__price-label">(税込み)</p>
         </div>
 
         <div class="item-detail__actions">
@@ -39,13 +39,13 @@
                             <img src="{{ asset('img/ハートロゴ_デフォルト.png') }}" alt="いいね" class="item-detail__action-icon">
                         @endif
                 </button>
-                <p class="item-detail__action--like-num">{{ $item->likes_count }}</p>
+                <p class="item-detail__action-count">{{ $item->likes_count }}</p>
                 </form>
             </div>
 
             <div class="item-detail__action item-detail__action--comment">
                 <img src="{{ asset('img/ふきだしロゴ.png') }}" alt="コメント" class="item-detail__action-icon">
-                <p class="item-detail__action--like-num">{{ $item->comments_count }}</p>
+                <p class="item-detail__action-count">{{ $item->comments_count }}</p>
             </div>
         </div>
 
@@ -92,7 +92,7 @@
                 @foreach($item->comments as $comment)
                 <div class="item-comment__item">
                     <div class="item-comment__user">
-                        <img src="{{ $comment->user->profile?->profile_image ? asset('storage/' . $comment->user->profile?->profile_image) : '' }}" alt="" class="item-comment__user-img">
+                        <img src="{{ $comment->user->profile?->profile_image ? asset('storage/' . $comment->user->profile?->profile_image) : '' }}" alt="プロフィール画像" class="item-comment__user-img">
                         <p class="item-comment__user--name"> {{ $comment->user->name }}</p>
                     </div>
                     <div class="item-comment__content">
@@ -106,7 +106,7 @@
                 <p class="item-comment__form--title">商品へのコメント</p>
 
                 <textarea class="item-comment__form-textarea" name="comment">{{ old('comment') }}</textarea>
-                @error('content')
+                @error('comment')
                     <p class="item-comment__error">{{ $message }}</p>
                 @enderror
 

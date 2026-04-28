@@ -12,8 +12,11 @@ class OrderController extends Controller
 {
     //
     public function purchase($item_id) {
-        $item = Product::find($item_id);
         $user = Auth::user();
+        if (!$user->profile) {
+            return redirect('/profile/edit');
+        }
+        $item = Product::find($item_id);
         $address = $user->profile;
         return view('orders.create', compact('item', 'address'));
     }
@@ -33,7 +36,7 @@ class OrderController extends Controller
                 'user_id' => $user->id,
                 'product_id' => $item->id,
                 'order_address_id' => $orderAddress->id,
-                'payment_method' => '12',
+                'payment_method' => $request->payment_method,
                 'purchased_price' => $item->price,
                 'purchased_at' => now(),
             ]);

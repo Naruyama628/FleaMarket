@@ -16,7 +16,7 @@
                 <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="product__img">
             </div>
             <div class="product__info">
-                <p class="product_name">{{ $item->name }}</p>
+                <p class="product__name">{{ $item->name }}</p>
                 <div class="product__price">
                     <p class="product__price--label">￥</p>
                     <p class="product__price--num">{{ number_format($item->price) }}</p>
@@ -25,7 +25,7 @@
         </div>
 
         <!-- 支払い方法 -->
-        <form action="/purchase/{{$item->id}}" method="get" class="payment_method__form">
+        <form action="/purchase/{{$item->id}}" method="get" class="payment-method__form">
             <input type="hidden" 
             name="postal_code" 
             value="{{ request('postal_code', $address->postal_code ?? '') }}">
@@ -41,17 +41,17 @@
             <p class="payment-method__label">支払い方法</p>
 
             <div class="payment-method__select-wrapper">
-                <select name="payment_method" id="payment_method" class="payment-method__select" placeholde="選択してください" onchange="this.form.submit()">
+                <select name="payment-method" id="payment-method" class="payment-method__select" onchange="this.form.submit()">
                     <option disabled selected>選択してください</option>
                     <option value="card" 
-                    {{ request('payment_method') == 'card' ? 'selected' : '' }}>カード</option>
+                    {{ request('payment-method') == 'card' ? 'selected' : '' }}>カード</option>
                     
                     <option value="konbini" 
-                    {{ request('payment_method') == 'konbini' ? 'selected' : '' }}>コンビニ支払い</option>
+                    {{ request('payment-method') == 'konbini' ? 'selected' : '' }}>コンビニ支払い</option>
                 </select>
             </div>
-            @error('payment_method')
-                <p class="payment-method__error">{{ $message }}</p>
+            @error('payment-method')
+                <p class="form-error">{{ $message }}</p>
             @enderror
         </form>
 
@@ -67,12 +67,12 @@
                 <div class="shipping-address__address">
                     <p>{{ request('address', $address->address) }}</p>
                     @error('postal_code')
-                        <p class="payment-method__error">{{ $message }}</p>
+                        <p class="form-error">{{ $message }}</p>
                     @enderror
 
                     <p>{{ request('building', $address->building) }}</p>
                     @error('address')
-                        <p class="payment-method__error">{{ $message }}</p>
+                        <p class="form-error">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -102,22 +102,18 @@
         <form action="{{ route('checkout.create', ['item' => $item->id]) }}" method="post" class="summary-form">
             @csrf
             <input type="hidden" 
-            class="summary-form__hidden-input" 
             name="payment_method" 
-            value="{{request('payment_method')}}">
+            value="{{request('payment-method')}}">
 
             <input type="hidden" 
-            class="summary-form__hidden-input" 
             name="postal_code" 
             value="{{ request('postal_code', $address->postal_code) }}">
 
             <input type="hidden" 
-            class="summary-form__hidden-input" 
             name="address" 
             value="{{ request('address', $address->address) }}">
             
             <input type="hidden" 
-            class="summary-form__hidden-input" 
             name="building" 
             value="{{ request('building', $address->building) }}">
             <button class="summary-form__button">購入する</button>

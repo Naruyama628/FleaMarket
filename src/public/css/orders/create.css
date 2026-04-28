@@ -30,7 +30,7 @@
     
 }
 
-.product_name {
+.product__name {
     font-weight: bold;
     font-size: 24px;
     margin: 0;
@@ -43,7 +43,7 @@
     font-size: 24px;
 }
 
-.payment_method__form {
+.payment-method__form {
     padding: 30px 30px 50px 30px;
     border-bottom: 1px solid #000000;
 }
@@ -152,7 +152,7 @@
     cursor: pointer;
 }
 
-.payment-method__error {
+.form-error {
     color: #FF0000;
     margin: 0 0 20px 0;
 }

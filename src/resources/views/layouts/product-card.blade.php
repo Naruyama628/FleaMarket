@@ -3,7 +3,7 @@
         <img src="{{ asset('storage/' . $item->image) }}" alt="商品画像" class="item-card__img">
         <p class="item-card__name">{{ $item->name }}</p>
         @if($item->is_sold)
-           <p class="item-card__sold">sold</p>
+           <p class="item-card__sold">Sold</p>
         @endif
     </a>
 </article>

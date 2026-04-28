@@ -35,11 +35,11 @@
     gap: 5px;
 }
 
-.item-detail__price--label {
+.item-detail__price-label {
     font-size: 14px;
 }
 
-.item-detail__price--num {
+.item-detail__price-num {
     font-size: 24px;
 }
 
@@ -65,7 +65,7 @@
     height: 40px;
 }
 
-.item-detail__action--like-num {
+.item-detail__action-count {
     text-align: center;
 }
 
