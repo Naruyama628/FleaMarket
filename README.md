@@ -9,12 +9,7 @@ cd FleaMarket
 
 cp src/.env.example src/.env
 
-.envのDB設定を反映させる  
-.envに下記をペースト
-
-・STRIPE_KEY=pk_test_xxxxx  
-・STRIPE_SECRET=sk_test_xxxxx  
-・STRIPE_WEBHOOK_SECRET=
+.envにDB設定stripe mailtrapの設定を行う
 
 docker-compose up -d --build
 
