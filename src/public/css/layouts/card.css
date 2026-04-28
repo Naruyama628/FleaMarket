@@ -1,0 +1,29 @@
+.item-card {
+    position: relative;
+    width: 290px;
+    height: 320px;
+}
+
+.item-card__img {
+    width: 290px;
+    height: 290px;
+}
+
+.item-card__name {
+    padding: 0;
+    margin: 0;
+}
+
+.item-card__link {
+    text-decoration: none;
+}
+
+.item-card__sold {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: red;
+    color: white;
+    padding: 5px 40px;
+}

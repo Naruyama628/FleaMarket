@@ -1,0 +1,158 @@
+.order-create {
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.order-create__left {
+    width: 60%;
+}
+
+.order-create__right {
+    width: 30%;
+}
+
+.product {
+    display: flex;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #000000;
+}
+
+.product__img {
+    width: 177px;
+    height: 177px;
+}
+
+.product__info {
+    
+}
+
+.product__name {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+}
+
+.product__price {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    font-size: 24px;
+}
+
+.payment-method__form {
+    padding: 30px 30px 50px 30px;
+    border-bottom: 1px solid #000000;
+}
+
+.payment-method__label {
+    font-weight: bold;
+}
+
+.payment-method__select-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.payment-method__select-wrapper::after {
+    position: absolute;
+    right: 40px;
+    width: 10px;
+    height: 7px;
+    background-color: #535353;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+
+.payment-method__select-wrapper select {
+    appearance: none;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #333333;
+    cursor: pointer;
+}
+
+.payment-method__select-wrapper {
+    padding: 0 30px;
+}
+
+.shipping-address {
+    padding: 30px 30px 50px 30px;
+    border-bottom: 1px solid #000000;
+}
+
+.shipping-address__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shipping-address__title {
+    font-weight: bold;
+    margin: 0 0 40px 0;
+}
+
+.shipping-address__edit-link {
+
+}
+
+.shipping-address__info {
+    padding: 0 30px;
+    font-weight: bold;
+}
+
+.shipping-address__postal-code {
+    padding: 0;
+    margin: 0;
+}
+
+.shipping-address__address {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.order-summary {
+    border: 1px solid #000000
+}
+
+.order-summary__price {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
+    padding: 10px 40px;
+}
+
+.order-summary__payment-method {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+.summary-form {
+    margin-top: 30px
+}
+
+.summary-form__button {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #FF5555;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form-error {
+    color: #FF0000;
+    margin: 0 0 20px 0;
+}

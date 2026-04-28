@@ -1,0 +1,105 @@
+.main-header {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.main__title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.login-form,
+.register-form {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.login-form__item,
+.register-form__item {
+    margin-bottom: 40px;
+}
+
+.login-form__item--text-center,
+.register-form__item--text-center {
+    text-align: center;
+}
+
+.login-form__label,
+.register-form__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+
+}
+
+.login-form__input,
+.register-form__input {
+    width: 100%;
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid;
+}
+
+.login-form__button,
+.register-form__button {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #FF5555;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.login-form__register-link,
+.register-form__login-link {
+    text-decoration: none
+}
+
+.register-form__error,
+.login-form__error {
+    color: #FF0000;
+    margin: 0;
+}
+
+.verify-email-message {
+    padding: 200px 0 20px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.verify-email-button {
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 30px;
+}
+
+.verify-email-button__link {
+    display: inline-block;
+    padding: 12px 32px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    background-color: #D9D9D9;
+    border: 1px solid #000;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.verify-email-form__button {
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #00f;
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}

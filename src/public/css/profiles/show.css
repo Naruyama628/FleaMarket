@@ -1,0 +1,73 @@
+/* プロフィール1 */
+.profile {
+    padding: 40px 0 ;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile__avatar-image {
+    display: block;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background-color: #D9D9D9;
+}
+
+.profile__name {
+    margin: auto 0;
+    width: 60%;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.profile__edit-link {
+    display: block;
+    padding: 10px 20px;
+    margin: auto 0;
+    text-decoration: none;
+    border: 1px solid #FF5555;
+    border-radius: 5px;
+    text-align: center;
+    color: #FF5555;
+}
+
+/* タブ */
+.tab-menu {
+    border-bottom: 1px solid gray;
+    display: flex;
+}
+
+.tab-menu__sell,
+.tab-menu__buy {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    color: #5F5F5F;
+}
+
+.tab-menu__sell {
+    margin: 50px 80px 10px 200px;
+}
+
+.tab-menu__sell--active {
+    color: #ff0000;
+}
+
+.tab-menu__buy {
+    margin: 50px 0 10px;
+}
+
+.tab-menu__buy--active {
+    color: #ff0000;
+}
+
+/* 商品一覧 */
+.item-list {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}

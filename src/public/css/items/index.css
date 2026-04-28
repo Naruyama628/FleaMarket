@@ -1,0 +1,38 @@
+/* タブ */
+.tab-menu {
+    border-bottom: 1px solid gray;
+    display: flex;
+}
+
+.tab-menu__recommended,
+.tab-menu__mylist {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+    color: #5F5F5F;
+}
+
+.tab-menu__recommended {
+    margin: 50px 80px 10px 200px;
+}
+
+.tab-menu__recommended--active {
+    color: #ff0000;
+}
+
+.tab-menu__mylist {
+    margin: 50px 0 10px;
+}
+
+.tab-menu__mylist--active {
+    color: #ff0000;
+}
+
+/* 商品一覧 */
+.item-list {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
