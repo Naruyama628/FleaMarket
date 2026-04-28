@@ -43,6 +43,7 @@ Docker / Docker Compose
 ユーザー登録: http://localhost/register
 
 phpMyAdmin: http://localhost:8080
+
 # FleaMarket
 
 # 環境構築
@@ -88,6 +89,7 @@ Docker / Docker Compose
 ユーザー登録: http://localhost/register
 
 phpMyAdmin: http://localhost:8080
+
 # FleaMarket
 
 # 環境構築
@@ -95,7 +97,17 @@ phpMyAdmin: http://localhost:8080
 ## Docker
 
 git clone https://github.com/Naruyama628/FleaMarket.git  
-cd FleaMarket  
+cd FleaMarket
+
+cp src/.env.example src/.env
+
+.envのDB設定を反映させる  
+.envに下記をペースト
+
+・STRIPE_KEY=pk_test_xxxxx  
+・STRIPE_SECRET=sk_test_xxxxx  
+・STRIPE_WEBHOOK_SECRET=
+
 docker-compose up -d --build
 
 ###Laravel  
@@ -105,8 +117,9 @@ cp .env.example .env
 php artisan key:generate  
 php artisan migrate  
 php artisan db:seed  
-php artisan storage:link  
-※ .env のDB設定は docker-compose.yml に合わせてください。
+php artisan storage:link
+
+.env にWebhook Secret反映
 
 # 使用技術
 
