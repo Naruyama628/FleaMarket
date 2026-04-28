@@ -11,19 +11,19 @@
 @section('content')
 <div class="tab-menu">
     @if($tab === 'mylist')
-        <a href="/" class="tab-menu__recommended ">
+        <a href="/?keyword={{request('keyword')}}" class="tab-menu__recommended ">
             おすすめ
         </a>
 
-        <a href="/?tab=mylist" class="tab-menu__myList tab-menu__myList--red">
+        <a href="/?tab=mylist&keyword={{request('keyword')}}" class="tab-menu__mylist tab-menu__mylist--active">
             マイリスト
         </a>
     @else
-        <a href="/" class="tab-menu__recommended tab-menu__recommended--red">
+        <a href="?keyword={{request('keyword')}}" class="tab-menu__recommended tab-menu__recommended--active">
             おすすめ
         </a>
 
-        <a href="/?tab=mylist" class="tab-menu__myList">
+        <a href="/?tab=mylist&keyword={{request('keyword')}}" class="tab-menu__mylist">
             マイリスト
         </a>
     @endif

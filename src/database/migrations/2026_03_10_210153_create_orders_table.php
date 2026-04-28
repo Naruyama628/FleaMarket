@@ -24,7 +24,6 @@ class CreateOrdersTable extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-
             $table->foreignId('order_address_id')
                 ->constrained()
                 ->cascadeOnDelete();

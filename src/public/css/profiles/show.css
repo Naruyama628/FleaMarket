@@ -51,7 +51,7 @@
     margin: 50px 80px 10px 200px;
 }
 
-.tab-menu__sell--red {
+.tab-menu__sell--active {
     color: #ff0000;
 }
 
@@ -59,7 +59,7 @@
     margin: 50px 0 10px;
 }
 
-.tab-menu__buy--red {
+.tab-menu__buy--active {
     color: #ff0000;
 }
 

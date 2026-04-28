@@ -25,7 +25,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             //
-            'image' => ['required', 'image', 'mimes:jpeg,png'],
+            'image' => ['image', 'mimes:jpeg,png'],
             'name' => ['required', 'string','max:20'],
             'postal_code' => ['required', 'regex:/^[0-9]{3}-[0-9]{4}$/'],
             'address' => ['required'],
@@ -36,7 +36,6 @@ class ProfileRequest extends FormRequest
     {
         return [
             //
-            'image.required' => 'プロフィール画像を入力してください',
             'image.image' => '画像ファイルを入力してください',
             'image.mimes' => '拡張子は.jpegまたは、.pngで入力してください',
 

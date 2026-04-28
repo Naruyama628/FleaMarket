@@ -19,6 +19,7 @@ use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Laravel\Fortify\Contracts\VerifyEmailResponse as VerifyEmailResponseContract;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -33,14 +34,15 @@ class FortifyServiceProvider extends ServiceProvider
                 public function toResponse($request)
                 {
                     $user = $request->user();
-                    if($user->profile_completed) {
-                        return redirect('/profile/edit');
+
+                    if (! $user->hasVerifiedEmail()) {
+                        return redirect()->route('verification.notice');
                     }
 
                     if (!$user->profile) {
                         return redirect('/profile/edit');
                     }
-                    
+
                     return redirect('/');
                 }
             };
@@ -50,7 +52,31 @@ class FortifyServiceProvider extends ServiceProvider
             return new class implements RegisterResponseContract {
                 public function toResponse($request)
                 {
-                    return redirect('/profile/edit');
+                    $user = $request->user();
+
+                    if (! $user->hasVerifiedEmail()) {
+                        return redirect()->route('verification.notice');
+                    }
+
+                    if (! $user->profile) {
+                        return redirect('/profile/edit');
+                    }
+
+                    return redirect('/');                }
+            };
+        });
+
+        $this->app->singleton(VerifyEmailResponseContract::class, function () {
+            return new class implements VerifyEmailResponseContract {
+                public function toResponse($request)
+                {
+                    $user = $request->user();
+
+                    if (! $user->profile) {
+                        return redirect('/profile/edit');
+                    }
+
+                    return redirect('/');
                 }
             };
         });
@@ -90,7 +116,7 @@ class FortifyServiceProvider extends ServiceProvider
 
             if (! $user || ! Hash::check($request->password, $user->password)) {
                 throw ValidationException::withMessages([
-                    'email' => ['ログイン情報が登録されていません。'],
+                    'email' => ['ログイン情報が登録されていません'],
                 ]);
             }
 

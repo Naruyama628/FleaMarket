@@ -39,6 +39,7 @@ class StripeCheckoutController extends Controller
                 'postal_code' => $request->postal_code,
                 'address' => $request->address,
                 'building' => $request->building,
+                'payment_method' => $request->payment_method,
             ],
         ]);
 

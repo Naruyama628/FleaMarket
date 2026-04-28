@@ -30,15 +30,15 @@
     <div class="register-form__item">
         <label for="password" class="register-form__label">パスワード</label>
         <input type="password" class="register-form__input" id="password" name="password">
+        @error('password')
+            <p class="register-form__error">{{ $message }}</p>
+        @enderror
         
     </div>
 
     <div class="register-form__item">
         <label for="password_confirmation" class="register-form__label">確認用のパスワード</label>
         <input type="password" class="register-form__input" id="password_confirmation" name="password_confirmation">
-        @error('password')
-            <p class="register-form__error">{{ $message }}</p>
-        @enderror
         @error('password_confirmation')
             <p class="register-form__error">{{ $message }}</p>
         @enderror

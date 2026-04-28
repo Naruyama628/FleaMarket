@@ -12,7 +12,7 @@
 
 <div class="profile">
     <div class="profile__avatar">
-        <img src="{{ $user->profile?->profile_image ? asset('storage/' . $user->profile?->profile_image) : '' }}" alt="" class="profile__avatar-image">
+        <img src="{{ $user->profile?->profile_image ? asset('storage/' . $user->profile?->profile_image) : '' }}" alt="プロフィール画像" class="profile__avatar-image">
     </div>
 
     <div class="profile__name">
@@ -28,11 +28,11 @@
         出品した商品
     </a>
 
-    <a href="/mypage?page=buy" class="tab-menu__buy tab-menu__buy--red">
+    <a href="/mypage?page=buy" class="tab-menu__buy tab-menu__buy--active">
         購入した商品
     </a>
     @else
-        <a href="/mypage?page=sell" class="tab-menu__sell tab-menu__sell--red">
+        <a href="/mypage?page=sell" class="tab-menu__sell tab-menu__sell--active">
             出品した商品
         </a>
 

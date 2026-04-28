@@ -66,6 +66,9 @@ class ProfileController extends Controller
 
     public function mypage(Request $request) {
         $user = Auth::user();
+        if (!$user->profile) {
+            return redirect('/profile/edit');
+        }
 
         $page = $request->query('page');
         if ($page === 'buy') {

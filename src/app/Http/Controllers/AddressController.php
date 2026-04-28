@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddressRequest;
-use App\Models\Order;
-use App\Models\OrderAddress;
 use App\Models\Product;
 
 

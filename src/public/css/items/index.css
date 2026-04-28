@@ -5,7 +5,7 @@
 }
 
 .tab-menu__recommended,
-.tab-menu__myList {
+.tab-menu__mylist {
     display: block;
     text-decoration: none;
     font-weight: bold;
@@ -16,15 +16,15 @@
     margin: 50px 80px 10px 200px;
 }
 
-.tab-menu__recommended--red {
+.tab-menu__recommended--active {
     color: #ff0000;
 }
 
-.tab-menu__myList {
+.tab-menu__mylist {
     margin: 50px 0 10px;
 }
 
-.tab-menu__myList--red {
+.tab-menu__mylist--active {
     color: #ff0000;
 }
 

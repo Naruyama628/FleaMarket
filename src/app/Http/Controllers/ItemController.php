@@ -8,18 +8,17 @@ use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Like;
-use App\Models\Comment;
 
 class ItemController extends Controller
 {
     // インデックス
     public function index(Request $request) {
         $tab = $request->query('tab');
+        $keyword = $request->query('keyword');
 
         if ($tab === 'mylist' && !auth()->check()) {
-            $items = [];
-            return view('items.index', compact('items', 'tab'));
+            $items = collect();
+            return view('items.index', compact('items', 'tab', 'keyword'));
         }
 
         if ($tab === 'mylist') {
@@ -27,42 +26,44 @@ class ItemController extends Controller
                     ->user()
                     ->likes()
                     ->where('products.user_id', '!=', auth()->id())
+                    ->where('name', 'like' , '%' . $request->keyword . '%')
                     ->get();
         } else {
-            $items = Product::where('products.user_id', '!=', auth()->id())->get();
+            $items = Product::where('user_id', '!=', auth()->id())
+                ->where('name', 'like', '%' . $request->keyword . '%')
+                ->get();
         }
 
-        return view('items.index', compact('items', 'tab'));
+        return view('items.index', compact('items', 'tab', 'keyword'));
     }
 
     public function search(Request $request) {
         $tab = $request->tab;
+        $keyword = $request->query('keyword');
 
         if($tab === 'mylist' && !auth()->check()) {
             $items = [];
-            return view('items.index', compact('items', 'tab'));
+            return view('items.index', compact('items', 'tab', 'keyword'));
         }
 
         if ($tab === 'mylist') {
             $items = auth()
                     ->user()
                     ->likes()
-                    ->where('is_sold', false)
+                    ->where('products.user_id', '!=', auth()->id())
                     ->where('name', 'like' , '%' . $request->keyword . '%')
                     ->get();
         } else {
-            $items = Product::where('is_sold', false)
+            $items = Product::where('products.user_id', '!=', auth()->id())
                             ->where('name', 'like' , '%' . $request->keyword . '%')
                             ->get();
         }
 
-        return view('items.index', compact('items', 'tab'));
+        return view('items.index', compact('items', 'tab', 'keyword'));
     }
 
     // 商品詳細表示
     public function show($item_id) {
-        $user = auth()->user();
-
         $item = Product::withCount(['likes', 'comments'])
         ->with('likes')
         ->with('comments')
@@ -73,6 +74,11 @@ class ItemController extends Controller
 
     // 商品出品ページ
     public function sell() {
+        $user = Auth::user();
+        if (!$user->profile) {
+            return redirect('/profile/edit');
+        }
+
         $categories = Category::all();
 
         return view('items.create', compact('categories'));
