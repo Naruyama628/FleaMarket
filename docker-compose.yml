@@ -42,12 +42,8 @@ services:
 
   stripe:
     image: stripe/stripe-cli:latest
-    command:
-      - listen
-      - --api-key
-      - ${STRIPE_SECRET}
-      - --forward-to
-      - http://nginx/stripe/webhook
+    entrypoint: /bin/sh
+    command: -c 'stripe listen --api-key "$$STRIPE_SECRET" --forward-to http://nginx/stripe/webhook'
     env_file:
       - ./src/.env
     depends_on:
