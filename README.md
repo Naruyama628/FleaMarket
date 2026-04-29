@@ -10,6 +10,7 @@ cd FleaMarket
 cp src/.env.example src/.env
 
 .envにDB設定stripe mailtrapの設定を行う
+.env にWebhook Secret反映
 
 docker-compose up -d --build
 
@@ -20,8 +21,6 @@ php artisan key:generate
 php artisan migrate  
 php artisan db:seed  
 php artisan storage:link
-
-.env にWebhook Secret反映
 
 # 使用技術
 

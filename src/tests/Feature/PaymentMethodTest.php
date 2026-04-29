@@ -66,7 +66,7 @@ class PaymentMethodTest extends TestCase
         // 小計画面の支払い選択がデフォルトになっていることを確認
         $response->assertSee('<p class="order-summary__value">選択してください</p>', false);
 
-        $response = $this->get('/purchase/' . $product->id . '?payment_method=card');
+        $response = $this->get('/purchase/' . $product->id . '?payment-method=card');
 
         $response->assertStatus(200);
         $response->assertSee('<p class="order-summary__value">カード</p>', false);

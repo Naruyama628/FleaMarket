@@ -95,7 +95,7 @@
 
             <div class="order-summary__payment-method">
                 <p class="order-summary__label">支払方法</p>
-                <p class="order-summary__value">{{ $labels[request('payment_method')] ?? '選択してください' }}</p>
+                <p class="order-summary__value">{{ $labels[request('payment-method')] ?? '選択してください' }}</p>
             </div>
         </div>
 
