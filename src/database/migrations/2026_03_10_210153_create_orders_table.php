@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
                 ->constrained()
                 ->cascadeOnDelete();
 
-        $table->foreignId('product_id')
+            $table->foreignId('product_id')
                 ->constrained()
                 ->cascadeOnDelete();
 
