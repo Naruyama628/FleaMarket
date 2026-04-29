@@ -9,8 +9,7 @@ cd FleaMarket
 
 cp src/.env.example src/.env
 
-.envにDB設定stripe mailtrapの設定を行う
-.env にWebhook Secret反映
+.envに環境変数を反映
 
 docker-compose up -d --build
 
@@ -21,6 +20,27 @@ php artisan key:generate
 php artisan migrate  
 php artisan db:seed  
 php artisan storage:link
+
+## 環境変数
+STRIPE_KEY=xxxxxx
+STRIPE_SECRET=xxxxxx
+STRIPE_WEBHOOK_SECRET=xxxxxx
+
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=xxxxxx
+MAIL_PASSWORD=xxxxxx
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=no-reply@example.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
 
 # 使用技術
 
